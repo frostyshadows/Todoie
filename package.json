@@ -2,6 +2,9 @@
   "name": "todoie",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "todoie": "bun run index.ts"
+  },
   "devDependencies": {
     "bun-types": "latest"
   },
