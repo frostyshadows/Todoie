@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  hono:
+    specifier: ^3.7.5
+    version: 3.7.5
   openai:
     specifier: ^4.0.0
     version: 4.11.1
@@ -104,6 +107,11 @@ packages:
     dependencies:
       node-domexception: 1.0.0
       web-streams-polyfill: 4.0.0-beta.3
+    dev: false
+
+  /hono@3.7.5:
+    resolution: {integrity: sha512-ZaaqAul84HHLXZKwwfH+eMInidwvRj9IdyOoI5Ze0v+WUOAAtQruml3QaUUWkOuI2Myt6IZAiUqkYklLK77k4g==}
+    engines: {node: '>=16.0.0'}
     dev: false
 
   /humanize-ms@1.2.1:
