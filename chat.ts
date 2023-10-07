@@ -1,6 +1,11 @@
 import OpenAI from "openai";
 
-interface TodoMetadata {
+export interface TodoContext {
+  filename: string;
+  code: string;
+}
+
+export interface TodoMetadata {
   title: string;
   description: string;
   tags: string[];
@@ -12,7 +17,8 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_TODOIE_API_KEY,
 });
 
-const prompt = `You are a talented senior software engineer. You have left a series of TODOs in your codebase and now you want to display them in a helpful, intuitive UI.
+function generatePrompt(todo: TodoContext): string {
+  return `You are a talented senior software engineer. You have left a series of TODOs in your codebase and now you want to display them in a helpful, intuitive UI.
 What follows is a single TODO and its surrounding context. Parse the TODO and its surrounding context. Some of the things you should look for include:
 - Any links to services like Jira, Github, or Asana.
 - Tags like "bug" or "feature"
@@ -48,27 +54,24 @@ Example output:
 }
 \`\`\`
 
-You must output valid JSON. The TODO to analyze follows:\n\n
+You must output valid JSON. The TODO to analyze comes from a file named ${todo.filename}. The TODO to analyze follows:\n\n
 
-\`\`\`
-// TODO: app.asana.com/id/78023489
-// Implement the final prompt
-const chatCompletion = await openai.chat.completions.create({
-    messages: [{ role: "user", content: prompt }],
-    model: "gpt-3.5-turbo",
-  });
-\`\`\`
+${todo.code}
 `;
-
-const chatCompletion = await openai.chat.completions.create({
-  messages: [{ role: "user", content: prompt }],
-  model: "gpt-3.5-turbo",
-});
-
-const message = chatCompletion.choices[0].message;
-if (!message.content) {
-  process.exit(1);
 }
 
-const todoMetadata: TodoMetadata = JSON.parse(message.content) as TodoMetadata;
-console.log(`${JSON.stringify(todoMetadata, null, 2)}`);
+export async function generateMetadata(
+  todo: TodoContext
+): Promise<TodoMetadata> {
+  const chatCompletion = await openai.chat.completions.create({
+    messages: [{ role: "user", content: generatePrompt(todo) }],
+    model: "gpt-3.5-turbo",
+  });
+
+  const message = chatCompletion.choices[0].message;
+  if (!message.content) {
+    process.exit(1);
+  }
+
+  return JSON.parse(message.content);
+}
