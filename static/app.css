@@ -9,3 +9,30 @@ code {
     "DejaVu Sans Mono", monospace;
   font-weight: normal;
 }
+
+.TodoList {
+  list-style: none;
+  max-width: 70ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.TodoItem {
+  border: solid;
+  border-radius: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+}
+
+.TodoContent {
+  margin-right: 3rem;
+}
+
+.GithubIcon {
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}

@@ -1,6 +1,6 @@
 import { Hono } from "hono";
-import { setupRoutes } from "./routes";
 import { TodoContext, TodoMetadata, generateMetadata } from "./chat";
+import { setupRoutes } from "./routes";
 
 const todoContexts: TodoContext[] = [
   {
@@ -22,8 +22,13 @@ if (!process.env.FRONTEND) {
 } else {
   console.log("Running in frontend-only mode...");
   todoMetadata.push({
-    title: "Implement the final prompt",
-    description: "Or else...",
+    title:
+      "Sint ea deserunt anim incididunt ad officia ullamco amet amet id veniam est excepteur.",
+    description: `Exercitation incididunt magna irure minim nostrud anim minim occaecat quis ullamco. Ea quis aliqua ipsum occaecat et fugiat sint duis id. Elit elit commodo consectetur ea. Amet fugiat exercitation est. Dolor irure fugiat et quis tempor reprehenderit aliquip nulla officia mollit exercitation.
+
+    Eu ea in esse. Quis occaecat sunt sunt dolor elit anim magna consequat. Commodo velit sint minim sit eu est id. Magna amet laborum Lorem do consequat. Dolore incididunt laborum deserunt do officia Lorem dolore ex anim est duis amet amet in. Enim est excepteur Lorem Lorem reprehenderit tempor fugiat deserunt ex.
+    
+    Elit ipsum excepteur culpa elit proident amet labore ea est tempor sint ullamco consectetur. Mollit nostrud labore anim culpa tempor sit proident velit commodo enim ut consequat tempor id. Dolore aliqua voluptate qui irure minim et. Elit veniam qui et irure pariatur et ipsum minim aliqua excepteur nulla officia ad. Nulla proident enim Lorem velit do nisi consequat tempor aute fugiat. Ad occaecat enim sunt pariatur. Pariatur veniam veniam non labore laboris occaecat in proident aute voluptate ullamco.`,
     tags: ["feature"],
     link: "https://app.asana.com/id/78023489",
     context_object: "const chatCompletion",
