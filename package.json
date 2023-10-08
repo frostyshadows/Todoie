@@ -3,7 +3,8 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "todoie": "bun run index.ts"
+    "todoie": "bun run index.ts",
+    "frontend": "FRONTEND=true bun --hot run index.ts"
   },
   "devDependencies": {
     "bun-types": "latest"

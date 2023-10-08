@@ -5,7 +5,7 @@ import { TodoContext, TodoMetadata, generateMetadata } from "./chat";
 const todoContexts: TodoContext[] = [
   {
     filename: "app.tsx",
-    code: `// TODO: app.asana.com/id/78023489
+    code: `// TODO: https://app.asana.com/id/78023489
 // Implement the final prompt
 const chatCompletion = await openai.chat.completions.create({
     messages: [{ role: "user", content: prompt }],
@@ -14,9 +14,20 @@ const chatCompletion = await openai.chat.completions.create({
   },
 ];
 const todoMetadata: TodoMetadata[] = [];
-for (const context of todoContexts) {
-  const metadata = await generateMetadata(context);
-  todoMetadata.push(metadata);
+if (!process.env.FRONTEND) {
+  for (const context of todoContexts) {
+    const metadata = await generateMetadata(context);
+    todoMetadata.push(metadata);
+  }
+} else {
+  console.log("Running in frontend-only mode...");
+  todoMetadata.push({
+    title: "Implement the final prompt",
+    description: "Or else...",
+    tags: ["feature"],
+    link: "https://app.asana.com/id/78023489",
+    context_object: "const chatCompletion",
+  });
 }
 
 const app = new Hono();
