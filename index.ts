@@ -1,21 +1,23 @@
 import { Hono } from "hono";
 import { TodoContext, TodoMetadata, generateMetadata } from "./chat";
 import { setupRoutes } from "./routes";
+import { findTodos } from "./grep";
 
-const todoContexts: TodoContext[] = [
-  {
-    filename: "app.tsx",
-    code: `// TODO: https://app.asana.com/id/78023489
-// Implement the final prompt
-const chatCompletion = await openai.chat.completions.create({
-    messages: [{ role: "user", content: prompt }],
-    model: "gpt-3.5-turbo",
-  });`,
-  },
-];
+// const todoContexts: TodoContext[] = [
+//   {
+//     filename: "app.tsx",
+//     code: `// TODO: https://app.asana.com/id/78023489
+// // Implement the final prompt
+// const chatCompletion = await openai.chat.completions.create({
+//     messages: [{ role: "user", content: prompt }],
+//     model: "gpt-3.5-turbo",
+//   });`,
+//   },
+// ];
 const todoMetadata: TodoMetadata[] = [];
 if (!process.env.FRONTEND) {
-  for (const context of todoContexts) {
+  const todoContexts: TodoContext[] = await findTodos();
+  for (const context of todoContexts.slice(0, 2)) {
     const metadata = await generateMetadata(context);
     todoMetadata.push(metadata);
   }

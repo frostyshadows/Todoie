@@ -7,10 +7,10 @@ export interface TodoContext {
 
 export interface TodoMetadata {
   title: string;
-  description: string;
+  description: string | null;
   tags: string[];
-  link: string;
-  context_object: string;
+  link: string | null;
+  context_object: string | null;
   filename: string;
   code: string;
 }

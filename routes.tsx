@@ -38,7 +38,7 @@ const Todo: FC<{ todo: TodoMetadata }> = (props: { todo: TodoMetadata }) => {
         <p>
           <b>Description:</b> {props.todo.description}
         </p>
-        {props.todo.link.length !== 0 && (
+        {props.todo.link && (
           <p>
             <b>Link:</b> <a href={props.todo.link}>{props.todo.link}</a>
           </p>
