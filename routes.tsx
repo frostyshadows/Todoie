@@ -48,9 +48,11 @@ const Todo: FC<{ todo: TodoMetadata }> = (props: { todo: TodoMetadata }) => {
             <b>Tags:</b> {props.todo.tags.join(", ")}
           </p>
         )}
-        <p>
-          <b>Related definition:</b> <code>{props.todo.context_object}</code>
-        </p>
+        {props.todo.context_object.length !== 0 && (
+          <p>
+            <b>Related definition:</b> <code>{props.todo.context_object}</code>
+          </p>
+        )}
       </div>
       <GithubIcon />
     </li>
