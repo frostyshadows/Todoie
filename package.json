@@ -3,7 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "todoie": "bun run index.ts",
+    "grep": "bun run grep.ts",
     "frontend": "FRONTEND=true bun --hot run index.ts"
   },
   "devDependencies": {

@@ -23,6 +23,7 @@ What follows is a single TODO and its surrounding context. Parse the TODO and it
 - Any links to services like Jira, Github, or Asana.
 - Tags like "bug" or "feature"
 - Explanatory context like a comment or description
+- The names or usernames of software engineers
 - The names of any relevant objects in the context, like a function name or class name
 
 Make up a title for the TODO based on the metadata and output a single JSON object with the fields title, description, tags, link, and context_object. Tags cannot be null, but the other fields can be null.
@@ -35,7 +36,7 @@ Example input:
 }
 
 // example.org/123456
-// TODO (bug): Fix time offset bug for AU
+// TODO (bug)(rwblickhan): Fix time offset bug for AU
 // These times are calculated incorrectly in Australian timezones; we should fix it
 
 function calculateTimezoneOffset() {
@@ -49,6 +50,7 @@ Example output:
     "title": "Fix time offset bug for AU",
     "description": "These times are calculated incorrectly in Australian timezones; we should fix it",
     "tags": ["bug"],
+    "people": ["rwblickhan],
     "link": "example.org/123456",
     "context_object": "function calculateTimezoneOffset()"
 }
