@@ -53,6 +53,15 @@ const Todo: FC<{ todo: TodoMetadata }> = (props: { todo: TodoMetadata }) => {
             <b>Related definition:</b> <code>{props.todo.context_object}</code>
           </p>
         )}
+        <p>
+          <b>File:</b> {props.todo.filename}
+        </p>
+        <p>
+          <b>Context:</b>
+        </p>
+        <pre>
+          <code>{props.todo.code}</code>
+        </pre>
       </div>
       <GithubIcon />
     </li>

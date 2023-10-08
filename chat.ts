@@ -11,6 +11,8 @@ export interface TodoMetadata {
   tags: string[];
   link: string;
   context_object: string;
+  filename: string;
+  code: string;
 }
 
 const openai = new OpenAI({
@@ -75,5 +77,5 @@ export async function generateMetadata(
     process.exit(1);
   }
 
-  return JSON.parse(message.content);
+  return { ...JSON.parse(message.content), ...todo };
 }
