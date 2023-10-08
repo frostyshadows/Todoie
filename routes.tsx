@@ -20,7 +20,7 @@ const Layout: FC = (props) => {
 const Top: FC<{ messages: string[] }> = (props: { messages: string[] }) => {
   return (
     <Layout>
-      <h1>Hello Hono!</h1>
+      <h1>Todoie</h1>
       <ul>
         {props.messages.map((message) => {
           return <li>{message}!!</li>;
