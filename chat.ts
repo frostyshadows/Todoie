@@ -8,7 +8,7 @@ export interface TodoContext {
 export interface TodoMetadata {
   title: string;
   description: string | null;
-  tags: string[];
+  tags: string[] | null;
   link: string | null;
   context_object: string | null;
   filename: string;

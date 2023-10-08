@@ -1,8 +1,15 @@
-function Square({ value, onSquareClick }) {
-  // TODO return make clickable button
+function Square({
+  value,
+  onSquareClick
+}) {
+  // TODO(rwblickhan) return make clickable button
 }
 
-function Board({ xIsNext, squares, onPlay }) {
+function Board({
+  xIsNext,
+  squares,
+  onPlay
+}) {
   function handleClick(i) {
     if (calculateWinner(squares) || squares[i]) {
       return;
@@ -24,7 +31,7 @@ function Board({ xIsNext, squares, onPlay }) {
     status = 'Next player: ' + (xIsNext ? 'X' : 'O');
   }
 
-  // TODO render board
+  // TODO(p0) render board
 }
 
 export default function Game() {
@@ -43,7 +50,7 @@ export default function Game() {
     currentMove = nextMove;
   }
 
-  // todo add gameplay logic
+  // todo: add gameplay logic
 }
 
 function calculateWinner(squares) {

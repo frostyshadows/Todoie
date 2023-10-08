@@ -35,20 +35,22 @@ const Todo: FC<{ todo: TodoMetadata }> = (props: { todo: TodoMetadata }) => {
     <li class="TodoItem">
       <div class="TodoContent">
         <h2>TODO: {props.todo.title}</h2>
-        <p>
-          <b>Description:</b> {props.todo.description}
-        </p>
+        {props.todo.description && props.todo.description.length !== 0 && (
+          <p>
+            <b>Description:</b> {props.todo.description}
+          </p>
+        )}
         {props.todo.link && (
           <p>
             <b>Link:</b> <a href={props.todo.link}>{props.todo.link}</a>
           </p>
         )}
-        {props.todo.tags.length !== 0 && (
+        {props.todo.tags && props.todo.tags.length !== 0 && (
           <p>
             <b>Tags:</b> {props.todo.tags.join(", ")}
           </p>
         )}
-        {props.todo.context_object.length !== 0 && (
+        {props.todo.context_object && (
           <p>
             <b>Related definition:</b> <code>{props.todo.context_object}</code>
           </p>
