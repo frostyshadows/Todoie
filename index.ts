@@ -34,6 +34,8 @@ if (!process.env.FRONTEND) {
     tags: ["feature"],
     link: "https://app.asana.com/id/78023489",
     context_object: "const chatCompletion",
+    filename: "app.tsx",
+    code: `// TODO: https://app.asana.com/id/78023489`,
   });
   todoMetadata.push({
     title:
@@ -46,6 +48,8 @@ if (!process.env.FRONTEND) {
     tags: [],
     link: "",
     context_object: "",
+    filename: "",
+    code: ``,
   });
 }
 
